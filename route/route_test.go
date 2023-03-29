@@ -8,12 +8,12 @@ func makeRoute() *Route {
 	return &Route{
 		netTopology: &NetworkTopology{
 			list: []*Link{
-				&Link{srcNode: "1", dstNodes: []string{"2", "3", "5"}},
-				&Link{srcNode: "2", dstNodes: []string{"1", "3"}},
-				&Link{srcNode: "3", dstNodes: []string{"1", "2", "5", "6"}},
-				&Link{srcNode: "4", dstNodes: []string{"6"}},
-				&Link{srcNode: "5", dstNodes: []string{"1", "3"}},
-				&Link{srcNode: "6", dstNodes: []string{"3", "4"}},
+				{srcNode: "1", dstNodes: []string{"2", "3", "5"}},
+				{srcNode: "2", dstNodes: []string{"1", "3"}},
+				{srcNode: "3", dstNodes: []string{"1", "2", "5", "6"}},
+				{srcNode: "4", dstNodes: []string{"6"}},
+				{srcNode: "5", dstNodes: []string{"1", "3"}},
+				{srcNode: "6", dstNodes: []string{"3", "4"}},
 			},
 		},
 		netTopologyChange: false,
@@ -45,5 +45,5 @@ func TestRoute(t *testing.T) {
 	} else {
 		t.Log("not update network topology")
 	}
-
+	// [[1 2 7] [1 3 2 7] [1 3 6 4 7] [1 5 3 2 7]]
 }

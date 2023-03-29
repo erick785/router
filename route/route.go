@@ -27,14 +27,6 @@ func (r *Route) UpdateNetworkTopology(link *Link) bool {
 		return false
 	}
 
-	if len(link.dstNodes) == 0 {
-		if !r.netTopology.srcNodeIsExist(link.srcNode) {
-			return false
-		}
-	}
-
-	r.netTopology.deleteLink(link)
-
 	if len(link.dstNodes) != 0 {
 		r.netTopology.addLink(link)
 	}
@@ -67,6 +59,11 @@ func (r *Route) GetNetworkTopology() []Link {
 }
 
 func dfs(nodes []Link, visited []string, routes *[][]string, dstNode string) {
+	// 超过5个节点，不再继续
+	if len(visited) > 5 {
+		return
+	}
+
 	lastVisited := visited[len(visited)-1]
 
 	if lastVisited == dstNode {
