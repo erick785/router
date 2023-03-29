@@ -86,7 +86,7 @@ func getRouter(importJsonData *ImportData, route *Route) []interface{} {
 	importJsonData.TokensForEach(func(key, value interface{}) bool {
 		token := key.(string)
 		wg.Add(1)
-		go func(result []interface{}, importJsonData *ImportData, route *Route) {
+		go func() {
 			importJsonData.TokensForEach(func(key, value interface{}) bool {
 				anotherToken := key.(string)
 				var routeResult []interface{}
@@ -111,12 +111,13 @@ func getRouter(importJsonData *ImportData, route *Route) []interface{} {
 				}
 
 				result = append(result, routeResult)
+
 				return true
 			})
 			wg.Done()
-		}(result, importJsonData, route)
+		}()
 
-		return true
+		return false
 	})
 
 	wg.Wait()
