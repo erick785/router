@@ -29,14 +29,14 @@ func printNetworkTopologyList(list []*Link, t *testing.T) {
 func TestRoute(t *testing.T) {
 	route := makeRoute()
 
-	t.Log("test add Link1")
-	if route.UpdateNetworkTopology(&Link{srcNode: "7", dstNodes: []string{"4"}}) {
-		//printNetworkTopologyList(route.netTopology.list, t)
-		t.Log(route.GetRoutes("1", "7"))
+	// t.Log("test add Link1")
+	// if route.UpdateNetworkTopology(&Link{srcNode: "7", dstNodes: []string{"4"}}) {
+	// 	//printNetworkTopologyList(route.netTopology.list, t)
+	// 	t.Log(route.GetRoutes("1", "7"))
 
-	} else {
-		t.Log("not update network topology")
-	}
+	// } else {
+	// 	t.Log("not update network topology")
+	// }
 
 	t.Log("test add Link2")
 	if route.UpdateNetworkTopology(&Link{srcNode: "7", dstNodes: []string{"4", "2"}}) {

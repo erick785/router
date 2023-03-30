@@ -59,8 +59,8 @@ func (r *Route) GetNetworkTopology() []Link {
 }
 
 func dfs(nodes []Link, visited []string, routes *[][]string, dstNode string) {
-	// 超过5个节点，不再继续
-	if len(visited) > 5 {
+	// 超过4个节点，不再继续
+	if len(visited) > 4 {
 		return
 	}
 
